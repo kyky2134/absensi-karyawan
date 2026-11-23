@@ -1,62 +1,6 @@
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
-document.addEventListener("DOMContentLoaded", function () {
-  const tanggal = document.getElementById("tanggal");
-  const pesan = document.getElementById("pesan");
-  const data = document.getElementById("data");
-
-  if (tanggal) {
-    tanggal.textContent = new Date().toLocaleDateString("id-ID", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric"
-    });
-  }
-
-  let jamMasuk = "";
-  let jamPulang = "";
-
-  function waktu() {
-    return new Date().toLocaleTimeString("id-ID");
-  }
-
-  function tampilkan() {
-    data.innerHTML = `
-      <tr>
-        <td>${new Date().toLocaleDateString("id-ID")}</td>
-        <td>${jamMasuk || "-"}</td>
-        <td>${jamPulang || "-"}</td>
-        <td>Hadir</td>
-      </tr>
-    `;
-  }
-
-  document.getElementById("absenMasuk")
-    ?.addEventListener("click", function () {
-      if (jamMasuk) {
-        alert("Kamu sudah absen masuk!");
-        return;
-      }
-
-      jamMasuk = waktu();
-      tampilkan();
-      pesan.textContent = "Berhasil absen masuk pukul " + jamMasuk;
-    });
-
-  document.getElementById("absenPulang")
-    ?.addEventListener("click", function () {
-      if (!jamMasuk) {
-        alert("Absen masuk terlebih dahulu!");
-        return;
-      }
-
-      if (jamPulang) {
-        alert("Kamu sudah absen pulang!");
-        return;
-      }
-
-      jamPulang = waktu();
-      tampilkan();
-      pesan.textContent = "Berhasil absen pulang pukul " + jamPulang;
-    });
-});
+console.log("Supabase berhasil terhubung!");
