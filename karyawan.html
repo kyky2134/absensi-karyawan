@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Karyawan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="login-container">
+    <section class="login-card">
+      <div class="logo">A</div>
+      <h1>Dashboard Karyawan</h1>
+      <p id="namaKaryawan">Selamat datang</p>
+
+      <div class="admin-menu">
+        <button onclick="absenMasuk()">Absen Masuk</button>
+        <button onclick="absenPulang()">Absen Pulang</button>
+        <button onclick="lihatRiwayat()">Riwayat Absensi</button>
+        <button onclick="lihatProfil()">Profil Saya</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+
+      <div id="konten">
+        <h3>Selamat Bekerja!</h3>
+        <p>Silakan lakukan absensi sesuai jam kerja.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="karyawan.js"></script>
+</body>
+</html>
