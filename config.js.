@@ -1,4 +1,2 @@
-
 const SUPABASE_URL = "https://bomqjyqzylyisqtwmqts.supabase.co";
-
 const SUPABASE_KEY = "sb_publishable_MeR37_4jbV_6jD8tNtezXg_4Tw7vYig";
