@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - Absensi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="login-container">
+    <section class="login-card">
+      <div class="logo">A</div>
+      <h1>Dashboard Admin</h1>
+      <p>Selamat datang di Sistem Absensi Karyawan</p>
+
+      <div class="admin-menu">
+        <button onclick="bukaMenu('dashboard')">Dashboard</button>
+        <button onclick="bukaMenu('karyawan')">Data Karyawan</button>
+        <button onclick="bukaMenu('absensi')">Data Absensi</button>
+        <button onclick="bukaMenu('laporan')">Laporan</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+
+      <div id="konten">
+        <h3>Dashboard</h3>
+        <p>Panel pengelolaan absensi karyawan.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
