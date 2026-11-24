@@ -1,6 +1,53 @@
+
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
 
-console.log("Supabase berhasil terhubung!");
+const loginForm = document.getElementById("loginForm");
+const pesan = document.getElementById("pesan");
+
+loginForm.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const roleDipilih = document.getElementById("role").value;
+
+  pesan.textContent = "Sedang memproses login...";
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    pesan.textContent = "Login gagal: " + error.message;
+    return;
+  }
+
+  const { data: profile, error: profileError } =
+    await supabaseClient
+      .from("profiles")
+      .select("role")
+      .eq("id", data.user.id)
+      .single();
+
+  if (profileError || !profile) {
+    await supabaseClient.auth.signOut();
+    pesan.textContent = "Profil akun belum tersedia.";
+    return;
+  }
+
+  if (profile.role !== roleDipilih) {
+    await supabaseClient.auth.signOut();
+    pesan.textContent = "Jenis akun tidak sesuai.";
+    return;
+  }
+
+  if (profile.role === "admin") {
+    window.location.href = "admin.html";
+  } else if (profile.role === "karyawan") {
+    window.location.href = "karyawan.html";
+  }
+});
